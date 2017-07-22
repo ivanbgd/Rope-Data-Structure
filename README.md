@@ -24,4 +24,5 @@ But, that's not needed. In-order traversal gives all characters in order
 This is Python v2.7.
 
 MIT License
+
 Copyright (c) 2017 Ivan Lazarevic
