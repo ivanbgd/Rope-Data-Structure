@@ -2,7 +2,7 @@
 
 Implementation of a data structure that can store a string and efficiently cut a part
 (a substring) of this string and insert it in a different position.
-This implementation only processes a given string.
+The current implementation only processes a given string.
 It doesn't support inserting of new characters in the string. 
 
 https://en.wikipedia.org/wiki/Rope_(data_structure)
@@ -19,7 +19,7 @@ The size of a node doesn't have anything to do with its rank. Also, when a node 
 change; only its size changes.
 One has to think in terms of node rank, and not in terms of node key, as usual!
 We could also add the field "rank" to Node objects.
-But, that's not needed. In-order traversal gives all characters in order
+But, that's not needed. In-order traversal gives all characters in order.
 
 This is Python v2.7.
 
