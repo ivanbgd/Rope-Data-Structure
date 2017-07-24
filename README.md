@@ -7,7 +7,7 @@ It doesn't support inserting of new characters in the string.
 
 https://en.wikipedia.org/wiki/Rope_(data_structure)
 
-Uses Splay tree to implement the Rope data structure
+Uses Splay tree to implement the Rope data structure.
 
 Nodes don't have keys. They only have values. And the value is a lowercase English letter.
 That means that one node contains and represents a single letter.
