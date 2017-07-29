@@ -23,6 +23,7 @@ Hello everybody!
 
 
 Each operation consists of i, j & k, which are described in the source file.
+n is length of the string, here 16.
 
 Constraints:
 0 <= i <= j <= n - 1
