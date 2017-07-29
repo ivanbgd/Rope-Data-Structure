@@ -7,25 +7,25 @@ from collections import deque
 Implementation of a data structure that can store a string and efficiently cut a part
 (a substring) of this string and insert it in a different position.
 This implementation only processes a given string.
-It doesn't support inserting of new characters in the string. 
+It doesn't support insertion of new characters in the string. 
 
 https://en.wikipedia.org/wiki/Rope_(data_structure)
 
 Uses Splay tree to implement the Rope data structure
 
-Nodes don't have keys. They only have values. And the value is a lowercase English letter.
-That means that one node contains and represents a single letter.
+Nodes don't have keys. They only have values. And the value is a character.
+That means that one node contains and represents a single character.
 This data structure is about strings. The string represents (is) contents of a text document.
-In a string, letters are in order, of course. The order is represented by their rank. That's why we use
+In a string, character are in order, of course. The order is represented by their rank. That's why we use
 order statistics to locate a node when searching for it (performing a "find" operation).
 The rank can be seen as their index, and we'll use 0-based indexing.
 The size of a node doesn't have anything to do with its rank. Also, when a node is splayed, its rank doesn't
 change; only its size changes.
 One has to think in terms of node rank, and not in terms of node key, as usual!
 We could also add the field "rank" to Node objects.
-But, that's not needed. In-order traversal gives all characters in order
+But, that's not needed. In-order traversal gives all characters in order.
 
-This is Python v2.7.
+Works in Python 2 & 3.
 """
 
 """
@@ -43,7 +43,7 @@ class Node(object):
         self.size = 1
 
     def printNode(self):
-        print "Value: {}, Size: {}; Parent: {}, Left child: {}, Right child: {}".format(self.value, self.size, self.parent, self.left, self.right)
+        print ("Value: {}, Size: {}; Parent: {}, Left child: {}, Right child: {}").format(self.value, self.size, self.parent, self.left, self.right)
 
     def __str__(self):
         return "({}, {})".format(self.value, self.size)
@@ -359,9 +359,9 @@ def printTree(tree, verbose = False):
     """If boolean verbose is True, it will print all nodes, in level order (BFS).
     """
     print
-    print "In order:", tree.inOrder()
+    print ("In order:", tree.inOrder())
     if verbose:
-        print "Nodes (in level order (BFS)):"
+        print ("Nodes (in level order (BFS)):")
         nodes = tree.levelOrder()
         for node in nodes:
             node.printNode()
@@ -376,17 +376,20 @@ The following numOps lines contain triples of integers (i, j, k).
 For i and j, counting starts from 0; for k, counting starts from 1.
 The code will cut the substring S[i..j] from S and insert it after the k-th character of
 the remaining string. If k == 0, it inserts the substring at the beginning.
+Constraints:
+0 <= i <= j <= n - 1
+0 <= k <= n - (j - i + 1)
 """
 	
 tree = SplayTree()
 rope = sys.stdin.readline().strip()
-for i in xrange(len(rope)):
+for i in range(len(rope)):
     #tree.insert(i, rope[i])
     tree.insertSpecific(rope[i])
 #printTree(tree, True)
 numOps = int(sys.stdin.readline())
-for _ in xrange(numOps):
+for _ in range(numOps):
     i, j, k = map(int, sys.stdin.readline().strip().split())
     tree = process(tree, i, j, k)
 #printTree(tree, True)
-print tree.inOrder()
+print (tree.inOrder())
